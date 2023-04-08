@@ -1,33 +1,53 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
 
 function App() {
-  const [count, setCount] = useState(0)
+
+  const [type, setType] = useState('');
+  const [reps, setReps] = useState(0);
+  const [sets, setSets] = useState(0);
+
+  async function click() {
+
+    const body = {
+      type: type,
+      reps: Number(reps),
+      sets: Number(sets),
+    }
+
+    console.log(body)
+
+    const response = await fetch("https://flask-mongo-383020.ue.r.appspot.com/add/", {
+      method: 'POST',
+      mode: 'cors',
+      cache: "no-cache",
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)}
+      );
+    // console.log(response)
+  }
+
+  function typeChange(e) {setType(e.target.value);}
+  function repsChange(e) {setReps(e.target.value);}
+  function setsChange(e) {setSets(e.target.value);}
+
+
 
   return (
     <div className="App">
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://reactjs.org" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <h1>Main thing</h1>
+      
+      Type:
+        <input cols="5" rows="1" onChange={typeChange} value={type}></input> <br />
+      Reps: 
+        <textarea cols="5" rows="1" onChange={repsChange} value={reps}></textarea> <br />
+      Sets: 
+        <textarea cols="5" rows="1" onChange={setsChange} value={sets}></textarea> <br />
+      
+      <br></br>
+      <button onClick={click}>record</button>
     </div>
   )
 }
