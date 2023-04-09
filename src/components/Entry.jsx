@@ -68,7 +68,6 @@ function Entry() {
   }
 
   function renderFields() {
-    // fetchSchemas();
     if (type in schemas) {
       return (
         <div className="render-fields">
@@ -78,7 +77,7 @@ function Entry() {
       );
     }
 
-    return <h4>Enter a type</h4>;
+    return <h4>Enter a type to start recording</h4>;
   }
 
   function renderType() {
@@ -101,10 +100,9 @@ function Entry() {
   return (
     <div className="main-entry">
       {renderType()}
-      <br />
       {renderFields()}
       <br />
-      <Button href="/add-schema" variant="outlined">Add Exercise</Button>
+      {/* <Button href="/add-schema" variant="outlined">Add Exercise</Button> */}
     </div>
   );
 }

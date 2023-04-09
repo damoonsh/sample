@@ -53,7 +53,7 @@ function Customize() {
         {keys.map((key, i) => (
           <ListItem>
             <ListItemText primary={key} />
-            <IconButton onClick={() => removeKey(i)} aria-label="delete">
+            <IconButton variant="contained" onClick={() => removeKey(i)} aria-label="delete">
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </ListItem>

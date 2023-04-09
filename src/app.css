@@ -9,3 +9,16 @@
     padding-bottom: 0.5rem;
 }
 
+.nav {
+    display: flex;
+    flex-direction: row;
+    gap: 0.6rem;
+    padding-bottom: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.nav Button {
+    width: 100%;
+}
+
