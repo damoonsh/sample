@@ -53,7 +53,7 @@ function Customize() {
         {keys.map((key, i) => (
           <ListItem>
             <ListItemText primary={key} />
-            <IconButton variant="contained" onClick={() => removeKey(i)} aria-label="delete">
+            <IconButton color="warning" variant="contained" onClick={() => removeKey(i)} aria-label="delete">
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </ListItem>
@@ -101,7 +101,7 @@ function Customize() {
       </div>
 
       <List>{renderKeys()}</List>
-      <Button href="/" variant="contained">Back</Button>
+      {/* <Button href="/" variant="contained">Back</Button> */}
     </div>
 
 
