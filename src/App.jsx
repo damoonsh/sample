@@ -13,7 +13,7 @@ function App() {
       <h1>Recorder</h1>
       <BrowserRouter>
       <Routes>
-        <Route path="/sample">
+        <Route path="/">
           <Route index element={<Entry/>}></Route>
           <Route path='add-schema' element={<Customize/>}>
           </Route>

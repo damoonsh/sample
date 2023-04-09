@@ -26,8 +26,8 @@ function Customize() {
   }
 
   async function addSchema() {
-    // const URL = "https://flask-mongo-383020.ue.r.appspot.com/create_schema/";
-    const URL = " http://127.0.0.1:8080/create_schema/";
+    const URL = "https://flask-mongo-383020.ue.r.appspot.com/create_schema/";
+    // const URL = " http://127.0.0.1:8080/create_schema/";
 
     const response = await fetch(URL, {
       method: "POST",
