@@ -104,7 +104,7 @@ function Entry() {
       <br />
       {renderFields()}
       <br />
-      <Button href="add-schema" variant="outlined">Add Exercise</Button>
+      <Button href="/sample/add-schema" variant="outlined">Add Exercise</Button>
     </div>
   );
 }
