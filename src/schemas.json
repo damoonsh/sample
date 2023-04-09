@@ -1,0 +1,8 @@
+{
+    "run": ["distance", "time"],
+    "lat-forward-backward": ["weight", "reps", "sets"],
+    "swim": ["laps", "time"],
+    "dip": ["reps", "sets"],
+    "bench-press": ["weight", "reps", "sets"],
+    "inclined-bench-press": ["weight", "reps", "sets"]
+}

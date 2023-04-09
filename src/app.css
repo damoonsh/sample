@@ -1,0 +1,11 @@
+.App {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.field {
+    padding-bottom: 0.5rem;
+}
+
