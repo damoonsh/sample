@@ -3,8 +3,7 @@ import { Customize } from "./components/Customize";
 import "./components/Entry.css";
 import "./app.css";
 
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { TextField, IconButton, Button, Box } from "@mui/material";
+import { Button } from "@mui/material";
 import { useState } from "react";
 
 function App() {

@@ -1,8 +1,6 @@
 .main {
     display: flex;
     flex-direction: column;
-    width: 15rem;
-    align-content: center;
     column-gap: 0.5rem;
 }
 
@@ -14,8 +12,4 @@
 
 .create {
     width: 100%;
-}
-
-p {
-    align-items: center;
 }

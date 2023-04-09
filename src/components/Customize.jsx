@@ -2,9 +2,8 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 import { useState } from "react";
-import { TextField, IconButton, Button, Box } from "@mui/material";
+import { TextField, IconButton, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { Padding } from "@mui/icons-material";
 import "./customize.css";
 
 function Customize() {

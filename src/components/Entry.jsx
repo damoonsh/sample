@@ -100,6 +100,7 @@ function Entry() {
   return (
     <div className="main-entry">
       {renderType()}
+      <br />
       {renderFields()}
       <br />
       {/* <Button href="/add-schema" variant="outlined">Add Exercise</Button> */}
