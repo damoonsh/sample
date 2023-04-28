@@ -1,15 +1,19 @@
 .main {
-    display: flex;
-    flex-direction: column;
-    column-gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.1rem;
 }
 
 .key {
-    display: flex;
-    flex-direction: row;
-    column-gap: 2rem;
+  display: flex;
+  flex-direction: row;
+  column-gap: 0.5rem;
 }
 
-.create {
-    width: 100%;
+.key TextField {
+    width: 3rem;
+}
+
+.key Button {
+    width: 1rem;
 }
