@@ -5,6 +5,7 @@ import { useState } from "react";
 import { TextField, IconButton, Button } from "@mui/material";
 import DeleteIcon from "@mui/icons-material/Delete";
 import "./customize.css";
+import AddIcon from "@mui/icons-material/Add";
 
 function Customize() {
   const [type, setTyp] = useState("");
@@ -36,33 +37,36 @@ function Customize() {
         Accept: "application/json",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"type": type, "keys": keys}),
+      body: JSON.stringify({ type: type, keys: keys }),
     });
 
-    console.log(response)
+    console.log(response);
   }
 
   function renderKeys() {
     if (keys.length < 1) {
-      return <p>Add at least one field is needed</p>;
+      return <center>Add at least one field is needed</center>;
     }
 
     return (
-      <div>
+      <div className="key-list">
+        <List>
         {keys.map((key, i) => (
           <ListItem>
             <ListItemText primary={key} />
-            <IconButton color="warning" variant="contained" onClick={() => removeKey(i)} aria-label="delete">
+            <IconButton
+              color="warning"
+              variant="contained"
+              onClick={() => removeKey(i)}
+              aria-label="delete"
+            >
               <DeleteIcon></DeleteIcon>
             </IconButton>
           </ListItem>
         ))}
-        <Button
-          className="create"
-          onClick={addSchema}
-          size="small"
-          variant="contained"
-        >
+        </List>
+        
+        <Button onClick={addSchema} size="small" variant="contained">
           <p>Create Exercise </p>
         </Button>
       </div>
@@ -90,20 +94,14 @@ function Customize() {
           onChange={(e) => setValue(e.target.value)}
         />
 
-        <Button
-          onClick={add}
-          size="large"
-          variant="contained"
-        >
-          +
+        <Button onClick={add} size="small" variant="contained">
+          <AddIcon></AddIcon>
         </Button>
       </div>
-
-      <List>{renderKeys()}</List>
+      <br />
+      {renderKeys()}
       {/* <Button href="/" variant="contained">Back</Button> */}
     </div>
-
-
   );
 }
 

@@ -3,6 +3,8 @@ import { useState, useEffect } from "react";
 import { TextField, Button } from "@mui/material";
 import Autocomplete from "@mui/material/Autocomplete";
 
+import './Entry.css';
+
 function Entry() {
   const [dict, setDict] = useState({});
   const [type, setType] = useState("");
@@ -36,6 +38,14 @@ function Entry() {
 
     const URL = "https://flask-mongo-383020.ue.r.appspot.com/add/";
     // const URL = " http://127.0.0.1:8080/add";
+    // const date = new Date()
+    // const ye = new Intl.DateTimeFormat('en', {year:'numeric'}).format(date)
+    // const mo = new Intl.DateTimeFormat('en', {month: 'numeric'}).format(date)
+    // const da = new Intl.DateTimeFormat('en', {day: 'numeric'}).format(date)
+
+    // setDict({'day': `${ye}-${mo}-${da}`, 'time': date.toLocaleTimeString('it-IT') })
+
+    console.log(dict)
 
     const response = await fetch(URL, {
       method: "POST",
@@ -47,6 +57,9 @@ function Entry() {
       },
       body: JSON.stringify(dict),
     });
+
+    setType('')
+    setDict({})
   }
 
 
@@ -61,14 +74,14 @@ function Entry() {
           onChange={(event) =>
             setDict({ ...dict, [key]: Number(event.target.value) })
           }
-        ></TextField>
-        <br />
+        />
       </>
     ));
   }
 
   function renderFields() {
     if (type in schemas) {
+      
       return (
         <div className="render-fields">
           {createFields()}
@@ -77,21 +90,26 @@ function Entry() {
       );
     }
 
-    return <h4>Enter a type to start recording</h4>;
+    return <center>Choose an exercise</center>;
   }
 
   function renderType() {
     return (
       <Autocomplete
+      className="type-input"
         color="success"
         disablePortal
+        isOptionEqualToValue={(option, value) =>
+          option.iso === value.iso
+        }
+        value={type}
         onChange={(event, newValue) => {
           setType(newValue);
           setDict({ ...dict, ["type"]: newValue });
         }}
         id="combo-box-demo"
         options={Object.keys(schemas)}
-        sx={{ width: 250 }}
+        // sx={{ width: 250 }}
         renderInput={(params) => <TextField {...params} label="type" />}
       />
     );
@@ -100,9 +118,7 @@ function Entry() {
   return (
     <div className="main-entry">
       {renderType()}
-      <br />
       {renderFields()}
-      <br />
       {/* <Button href="/add-schema" variant="outlined">Add Exercise</Button> */}
     </div>
   );

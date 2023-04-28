@@ -1,10 +1,13 @@
-import { Entry } from "./components/Entry";
-import { Customize } from "./components/Customize";
-import "./components/Entry.css";
-import "./app.css";
-
 import { Button } from "@mui/material";
 import { useState } from "react";
+// import { BrowserRouter, HashRouter, Routes, Route} from "react-router-dom";
+
+import { Entry } from "./components/Entry";
+import { Customize } from "./components/Customize";
+import "./app.css";
+
+import AddIcon from '@mui/icons-material/Add';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 
 function App() {
   const [page, setPage] = useState("entry");
@@ -12,7 +15,7 @@ function App() {
   function renderPage() {
     if (page == "entry") {
       return <Entry />;
-    } else {
+    } else if (page == 'add') {
       return <Customize />;
     }
   }
@@ -24,24 +27,23 @@ function App() {
           variant={page == "entry" ? "contained" : "outlined"}
           onClick={() => setPage("entry")}
         >
-          Entry
+          <RadioButtonCheckedIcon/>
         </Button>
         <Button
           variant={page == "add" ? "contained" : "outlined"}
           onClick={() => setPage("add")}
         >
-          Add
+          <AddIcon></AddIcon>
         </Button>
-        
-      </div>
 
+      </div>
       {renderPage()}
 
-      {/* <BrowserRouter>
+      {/* <BrowserRouter basename="/sample">
         <Routes>
           <Route path="/">
             <Route index element={<Entry />}></Route>
-            <Route path="add-schema" element={<Customize />}></Route>
+            <Route path="/add-schema" element={<Customize />}></Route>
           </Route>
         </Routes>
       </BrowserRouter> */}
