@@ -6,7 +6,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import './Entry.css';
 
 function Entry() {
-  const [dict, setDict] = useState({});
+  const [dict, setDict] = useState({'timezone':  Intl.DateTimeFormat().resolvedOptions().timeZone});
   const [type, setType] = useState("");
   const [schemas, setSchemas] = useState({});
 
@@ -37,13 +37,7 @@ function Entry() {
   async function click() {
 
     const URL = "https://flask-mongo-383020.ue.r.appspot.com/add/";
-    // const URL = " http://127.0.0.1:8080/add";
-    // const date = new Date()
-    // const ye = new Intl.DateTimeFormat('en', {year:'numeric'}).format(date)
-    // const mo = new Intl.DateTimeFormat('en', {month: 'numeric'}).format(date)
-    // const da = new Intl.DateTimeFormat('en', {day: 'numeric'}).format(date)
-
-    // setDict({'day': `${ye}-${mo}-${da}`, 'time': date.toLocaleTimeString('it-IT') })
+    // const URL = " http://127.0.0.1:8080/add/";
 
     console.log(dict)
 
@@ -59,18 +53,19 @@ function Entry() {
     });
 
     setType('')
-    setDict({})
+    setDict({'timezone':  Intl.DateTimeFormat().resolvedOptions().timeZone})
   }
 
 
   function createFields() {
+    
     return schemas[type].map((key, i) => (
       <>
         <TextField
           size="small"
           color="secondary"
           label={key}
-          key={i}
+          key={`${key}-${i}`}
           onChange={(event) =>
             setDict({ ...dict, [key]: Number(event.target.value) })
           }
@@ -81,6 +76,11 @@ function Entry() {
 
   function renderFields() {
     if (type in schemas) {
+
+      // if (Object.keys(dict).length === 0) {
+      //   setDict({ ...dict, 'timezone':  Intl.DateTimeFormat().resolvedOptions().timeZone})
+      //   console.log(dict)
+      // }
       
       return (
         <div className="render-fields">
